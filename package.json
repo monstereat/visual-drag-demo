@@ -6,10 +6,6 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": "eslint",
-    "src/**/*.{vue,scss,css,sass}": "stylelint --allow-empty-input"
-  },
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
