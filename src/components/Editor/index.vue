@@ -1,61 +1,28 @@
 <template>
-    <div
-        id="editor"
-        class="editor"
-        :class="{ edit: isEdit }"
-        :style="{
-            width: changeStyleWithScale(canvasStyleData.width) + 'px',
-            height: changeStyleWithScale(canvasStyleData.height) + 'px',
-        }"
-        @contextmenu="handleContextMenu"
-        @mousedown="handleMouseDown"
-    >
+    <div id="editor" class="editor" :class="{ edit: isEdit }" :style="{
+        width: changeStyleWithScale(canvasStyleData.width) + 'px',
+        height: changeStyleWithScale(canvasStyleData.height) + 'px',
+    }" @contextmenu="handleContextMenu" @mousedown="handleMouseDown">
         <!-- 网格线 -->
         <Grid />
 
         <!--页面组件列表展示-->
-        <Shape
-            v-for="(item, index) in componentData"
-            :key="item.id"
-            :default-style="item.style"
-            :style="getShapeStyle(item.style)"
-            :active="item.id === (curComponent || {}).id"
-            :element="item"
-            :index="index"
-            :class="{ lock: item.isLock }"
-        >
-            <component
-                :is="item.component"
-                v-if="item.component != 'v-text'"
-                :id="'component' + item.id"
-                class="component"
-                :style="getComponentStyle(item.style)"
-                :prop-value="item.propValue"
-                :element="item"
-            />
+        <Shape v-for="(item, index) in componentData" :key="item.id" :default-style="item.style"
+            :style="getShapeStyle(item.style)" :active="item.id === (curComponent || {}).id" :element="item"
+            :index="index" :class="{ lock: item.isLock }">
+            <component :is="item.component" v-if="item.component != 'v-text'" :id="'component' + item.id"
+                class="component" :style="getComponentStyle(item.style)" :prop-value="item.propValue" :element="item" />
 
-            <component
-                :is="item.component"
-                v-else
-                :id="'component' + item.id"
-                class="component"
-                :style="getComponentStyle(item.style)"
-                :prop-value="item.propValue"
-                :element="item"
-                @input="handleInput"
-            />
+            <component :is="item.component" v-else :id="'component' + item.id" class="component"
+                :style="getComponentStyle(item.style)" :prop-value="item.propValue" :element="item"
+                @input="handleInput" />
         </Shape>
         <!-- 右击菜单 -->
         <ContextMenu />
         <!-- 标线 -->
         <MarkLine />
         <!-- 选中区域 -->
-        <Area
-            v-show="isShowArea"
-            :start="start"
-            :width="width"
-            :height="height"
-        />
+        <Area v-show="isShowArea" :start="start" :width="width" :height="height" />
     </div>
 </template>
 
@@ -110,6 +77,7 @@ export default {
         changeStyleWithScale,
 
         handleMouseDown(e) {
+            console.log('handleMouseDown editor')
             // 如果没有选中组件 在画布上点击时需要调用 e.preventDefault() 防止触发 drop 事件
             if (!this.curComponent || (this.curComponent.component != 'v-text' && this.curComponent.component != 'rect-shape')) {
                 e.preventDefault()
