@@ -1,19 +1,9 @@
 <template>
-    <div
-        class="shape"
-        :class="{ active }"
-        @click="selectCurComponent"
-        @mousedown="handleMouseDownOnShape"
-    >
+    <div class="shape" :class="{ active }" @click="selectCurComponent" @mousedown="handleMouseDownOnShape">
         <span v-show="isActive()" class="iconfont icon-xiangyouxuanzhuan" @mousedown="handleRotate"></span>
         <span v-show="element.isLock" class="iconfont icon-suo"></span>
-        <div
-            v-for="item in (isActive()? pointList : [])"
-            :key="item"
-            class="shape-point"
-            :style="getPointStyle(item)"
-            @mousedown="handleMouseDownOnPoint(item, $event)"
-        >
+        <div v-for="item in (isActive() ? pointList : [])" :key="item" class="shape-point" :style="getPointStyle(item)"
+            @mousedown="handleMouseDownOnPoint(item, $event)">
         </div>
         <slot></slot>
     </div>
@@ -25,7 +15,7 @@ import runAnimation from '@/utils/runAnimation'
 import { mapState } from 'vuex'
 import calculateComponentPositonAndSize from '@/utils/calculateComponentPositonAndSize'
 import { mod360 } from '@/utils/translate'
-
+//更新
 export default {
     props: {
         active: {
@@ -35,12 +25,12 @@ export default {
         element: {
             require: true,
             type: Object,
-            default: () => {},
+            default: () => { },
         },
         defaultStyle: {
             require: true,
             type: Object,
-            default: () => {},
+            default: () => { },
         },
         index: {
             require: true,
