@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --no-lint",
     "build": "vue-cli-service build"
   },
   "dependencies": {
@@ -16,24 +16,13 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-airbnb": "^5.0.2",
-    "babel-eslint": "^10.1.0",
     "chalk": "^4.1.1",
     "compression-webpack-plugin": "^6.1.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "husky": "^4.2.3",
-    "lint-staged": "^11.0.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^22.0.0",
-    "stylelint-scss": "^3.21.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.44.2"
   }

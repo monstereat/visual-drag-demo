@@ -199,6 +199,7 @@ export default {
         },
 
         handleMouseDownOnShape(e) {
+            console.log('handleMouseDownOnShape')
             this.$store.commit('setInEditorStatus', true)
             this.$store.commit('setClickComponentStatus', true)
             if (this.element.component != 'v-text' && this.element.component != 'rect-shape') {
